@@ -10,7 +10,44 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
+h1, h3{
+  text-align: center;
+}
 
+img{
+  display: block;
+  margin: 0 auto;
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.hidden-fight-button, #restartGame{
+  display: none;
+}
+
+#buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 5%;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.left-buttons {
+  justify-content: flex-start;
+}
+
+.right-buttons {
+  justify-content: flex-end;
+}
+
+#drawCards{
+  display: block;
+}
 
 /******************************************
 /* ADDITIONAL STYLES
