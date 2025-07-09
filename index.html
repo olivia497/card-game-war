@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="This is where your description goes">
+    	<meta name="keywords" content="one, two, three">
+
+		<title>Title in the tab</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+
+		<h1>Card Game</h1>
+		<h3>Result: </h3>
+
+		<div id="buttons">
+			<div class="button-group left-buttons">
+				<button id="restartGame" class="show-restart-game-button">Restart Game</button>
+			</div>
+			<div class="button-group right-buttons">
+				<button id="drawCards">Draw cards</button>
+				<button id="fight" class="hidden-fight-button">Fight!</button>	
+			</div>
+		</div>
+		<div id="main">
+			<div id="playerOneContainer">
+				<h2>Player 1</h2>
+				<p id="playerOneCount">Player 1: 0 cards</p>
+				<img id="playerOne" src="" alt="">
+			</div>
+			<div id="playerTwoContainer">
+				<h2>Player 2</h2>
+				<p id="playerTwoCount">Player 2: 0 cards</p>
+				<img id="playerTwo" src="" alt="">
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
