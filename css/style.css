@@ -1,40 +1,122 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Nunito:wght@300;400;500;600;700&display=swap');
+
 /******************************************
-/* CSS
+/* CSS RESET & BASE
 /*******************************************/
 
 /* Box Model Hack */
-*{
+* {
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
+  min-height: 100vh;
+  color: #2d3436;
+  overflow-x: hidden;
+  position: relative;
+}
+
 /******************************************
-/* LAYOUT
+/* TYPOGRAPHY
 /*******************************************/
-h1, h3{
+
+h1 {
+  font-family: 'Fredoka', cursive;
+  font-weight: 600;
+  font-size: clamp(2rem, 3vw, 3rem);
   text-align: center;
+  margin: 2rem 0;
+  color: #6c5ce7;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
-img{
-  display: block;
-  margin: 0 auto;
-  max-height: 200px;
-  max-width: 200px;
+h1::before {
+  content: '\f521'; /* crown */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 1.2em;
+  animation: bounce 2s ease-in-out infinite;
 }
 
-.hidden-fight-button, #restartGame{
-  display: none;
+h1::after {
+  content: '\f3ed'; /* shield */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 1.2em;
+  animation: bounce 2s ease-in-out infinite 0.5s;
 }
 
-#buttons{
+@keyframes bounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+h2 {
+  font-family: 'Fredoka', cursive;
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #e17055;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+h3 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  border: 2px solid #fdcb6e;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre-line;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+}
+
+h3:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 203, 110, 0.5);
+  border-color: #e17055;
+}
+
+/******************************************
+/* BUTTONS
+/*******************************************/
+
+#buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 5%;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .button-group {
   display: flex;
-  gap: 10px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .left-buttons {
@@ -45,10 +127,368 @@ img{
   justify-content: flex-end;
 }
 
-#drawCards{
-  display: block;
+button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+#drawCards {
+  background: linear-gradient(45deg, #00b894, #00a085);
+  color: white;
+}
+
+#drawCards:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+}
+
+#fight {
+  background: linear-gradient(45deg, #e84393, #d63384);
+  color: white;
+  animation: wiggle 0.8s ease-in-out infinite;
+}
+
+#fight:hover {
+  transform: translateY(-2px);
+  animation: none;
+  box-shadow: 0 6px 20px rgba(232, 67, 147, 0.4);
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+#restartGame {
+  background: linear-gradient(45deg, #fdcb6e, #e17055);
+  color: white;
+}
+
+#restartGame:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(253, 203, 110, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.hidden-fight-button, 
+#restartGame {
+  display: none;
 }
 
 /******************************************
-/* ADDITIONAL STYLES
+/* MAIN GAME AREA
 /*******************************************/
+
+#main {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 2rem 5%;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+#playerOneContainer,
+#playerTwoContainer {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 3px solid #74b9ff;
+  box-shadow: 0 8px 32px rgba(116, 185, 255, 0.3);
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  position: relative;
+}
+
+#playerOneContainer::before {
+  content: '\f007'; /* user */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 2rem;
+  background: white;
+  padding: 5px 8px;
+  border-radius: 50%;
+  border: 2px solid #a29bfe;
+  color: #a29bfe;
+}
+
+#playerTwoContainer::before {
+  content: '\f544'; /* robot */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  font-size: 2rem;
+  background: white;
+  padding: 5px 8px;
+  border-radius: 50%;
+  border: 2px solid #74b9ff;
+  color: #74b9ff;
+}
+
+#playerOneContainer:hover,
+#playerTwoContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(116, 185, 255, 0.4);
+  border-color: #0984e3;
+}
+
+#playerOneContainer {
+  border-color: #a29bfe;
+  box-shadow: 0 8px 32px rgba(162, 155, 254, 0.3);
+}
+
+#playerOneContainer:hover {
+  border-color: #6c5ce7;
+  box-shadow: 0 12px 40px rgba(162, 155, 254, 0.4);
+}
+
+#playerOneContainer {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+#playerTwoContainer {
+  animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/******************************************
+/* CARD DISPLAY
+/*******************************************/
+
+img {
+  display: block;
+  margin: 1.5rem auto;
+  max-height: 280px;
+  max-width: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border: 3px solid #fdcb6e;
+}
+
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+  border-color: #e17055;
+}
+
+/* Card flip animation */
+img.card-flip {
+  animation: flipCard 0.6s ease-in-out;
+}
+
+@keyframes flipCard {
+  0% { transform: rotateY(0); }
+  50% { transform: rotateY(90deg); }
+  100% { transform: rotateY(0); }
+}
+
+/******************************************
+/* CARD COUNTERS
+/*******************************************/
+
+p {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+  border-radius: 20px;
+  border: 1px solid #fdcb6e;
+  color: #2d3436;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+}
+
+/******************************************
+/* RESPONSIVE DESIGN
+/*******************************************/
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+  }
+  
+  #buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .button-group {
+    justify-content: center;
+  }
+  
+  #main {
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 2%;
+  }
+  
+  #playerOneContainer,
+  #playerTwoContainer {
+    width: 100%;
+    max-width: 350px;
+    padding: 1.5rem;
+  }
+  
+  button {
+    min-width: 120px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  img {
+    max-height: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  #playerOneContainer,
+  #playerTwoContainer {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  img {
+    max-height: 200px;
+  }
+  
+  button {
+    min-width: 100px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+/******************************************
+/* SPECIAL EFFECTS
+/*******************************************/
+
+/* Victory animation */
+.victory-glow {
+  animation: victorySparkle 1.5s ease-in-out;
+  border-color: #00b894 !important;
+}
+
+@keyframes victorySparkle {
+  0%, 100% { 
+    box-shadow: 0 8px 32px rgba(0, 184, 148, 0.3);
+  }
+  50% { 
+    box-shadow: 0 8px 40px rgba(0, 184, 148, 0.8);
+    transform: translateY(-5px) scale(1.02);
+  }
+}
+
+/* War animation */
+.war-shake {
+  animation: warWiggle 0.6s ease-in-out;
+  border-color: #e84393 !important;
+}
+
+@keyframes warWiggle {
+  0%, 100% { transform: translateY(-5px) translateX(0) rotate(0deg); }
+  25% { transform: translateY(-5px) translateX(-5px) rotate(-1deg); }
+  75% { transform: translateY(-5px) translateX(5px) rotate(1deg); }
+}
+
+/* Hover hearts */
+#playerOneContainer:hover::after,
+#playerTwoContainer:hover::after {
+  content: '\f004'; /* heart */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 1.5rem;
+  color: #e84393;
+  animation: heartPulse 0.8s ease-in-out;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); opacity: 0; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
