@@ -1,9 +1,4 @@
-//war card game
-//each draw a card, higher card wins 
-//if drawn card matches, declare war, put up 3 cards and flip 4th, whoever wins that takes all the cards 
-//you win when you have the whole deck
-
-let deckId = ''; //shouldn't have global variables, bad practice
+let deckId = ''; 
 let playerOnePile = [];
 let playerTwoPile = [];
 
