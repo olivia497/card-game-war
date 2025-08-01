@@ -33,6 +33,10 @@ https://www.deckofcardsapi.com/
 
 No API key is required. However, ensure your internet connection is active while playing.
 
+## Screenshots
+
+<img width="1000" height="500" alt="card-game-war-screenshot" src="https://github.com/user-attachments/assets/fd77e56b-73b1-4be2-9af5-d4552de764c4" />
+
 
 ## File Structure
 war-card-game/
